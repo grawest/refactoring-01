@@ -232,7 +232,7 @@ final class JsonResponse implements ResponseInterface
         }
 
         $new->reasonPhrase = $reasonPhrase;
-        
+
         return $new;
     }
 
