@@ -37,13 +37,11 @@ class ProductRepository implements ProductRepositoryInterface
      */
     public function getByUuid(string $uuid): Product
     {
-        // тут нужно через prepare сделать
-        $row = $this->connection->fetchOne(
-            "SELECT * FROM products WHERE uuid = " . $uuid,
-        );
+        $sql = 'SELECT * FROM products WHERE uuid = ?';
+        $row = $this->connection->fetchOne($sql, [$uuid]);
 
         if (empty($row)) {
-            throw new ProductException('Product not found', 404, null);
+            throw new ProductException('Товар не найден', 404, null);
         }
 
         return ProductFactory::createFromArray($row);
@@ -55,10 +53,8 @@ class ProductRepository implements ProductRepositoryInterface
      */
     public function getByCategory(string $category): ProductsCollection
     {
-        // тут нужно через prepare сделать
-        $rows = $this->connection->fetchAllAssociative(
-            "SELECT id FROM products WHERE is_active = 1 AND category = " . $category,
-        );
+        $sql = 'SELECT * FROM products WHERE is_active = 1 AND category = ?';
+        $rows = $this->connection->fetchAllAssociative($sql, [$category]);
 
         return ProductsFactory::createFromArray($rows);
     }
