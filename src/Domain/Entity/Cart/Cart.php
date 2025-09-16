@@ -6,12 +6,12 @@ namespace Raketa\BackendTestTask\Domain\Entity\Cart;
 
 use Raketa\BackendTestTask\Domain\Entity\Customer\Customer;
 
-final class Cart
+final readonly class Cart
 {
     public function __construct(
-        readonly private string $uuid,
-        readonly private Customer $customer,
-        readonly private string $paymentMethod,
+        private string $uuid,
+        private Customer $customer,
+        private string $paymentMethod,
         private array $items,
     ) {
     }

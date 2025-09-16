@@ -34,6 +34,8 @@ readonly class CartOutputMapper
         $data['items'] = [];
         foreach ($cart->getItems() as $item) {
             $total += $item->getPrice() * $item->getQuantity();
+
+            // так не нужно. возникает N+1 проблема
             $product = $this->productRepository->getByUuid($item->getProductUuid());
 
             $data['items'][] = [

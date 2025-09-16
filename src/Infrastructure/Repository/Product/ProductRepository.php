@@ -58,4 +58,17 @@ class ProductRepository implements ProductRepositoryInterface
 
         return ProductsFactory::createFromArray($rows);
     }
+
+    /**
+     * @param array $arUuids
+     * @return ProductsCollection
+     */
+    public function getByUuids(array $arUuids): ProductsCollection
+    {
+        $strUuids = implode(',', $arUuids);
+        $sql = 'SELECT * FROM users WHERE name IN (?)';
+        $rows = $this->connection->fetchAllAssociative($sql, [$strUuids]);
+
+        return ProductsFactory::createFromArray($rows);
+    }
 }
