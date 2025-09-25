@@ -6,7 +6,7 @@ namespace Raketa\BackendTestTask\Domain\Entity\Dto;
 /**
  *
  */
-class AddToCartDto
+final readonly class AddToCartDto
 {
     /**
      * @param string|null $cartId

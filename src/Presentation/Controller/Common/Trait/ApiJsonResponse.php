@@ -90,7 +90,7 @@ trait ApiJsonResponse
         $response = $response->withStatus($status);
         $response = $response->withHeader('Content-Type', 'application/json; charset=utf-8');
 
-        $json = \json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        $json = \json_encode($data, JSON_UNESCAPED_UNICODE);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
             $json = \json_encode([

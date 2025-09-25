@@ -55,7 +55,7 @@ class RedisCartRepository implements CartRepositoryInterface
         try {
             $cart = $this->connector->get($id);
             if ($cart === null) {
-                throw new CartException('Корзина отсутствует', 404, null);
+                throw new CartException('Корзина отсутствует', 404);
             }
 
             return $cart;

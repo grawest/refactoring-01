@@ -14,4 +14,5 @@
 - поправил миграцию
 - поправил gitignore
 - в Presentation/Controller/JsonResponse сделал реализацию ResponseInterface
-
+- убрал implements Throwable у BaseException
+- доработал фабрику Redis
